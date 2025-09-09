@@ -13,7 +13,8 @@ export function DocsPage() {
             SOLPays Documentation
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Complete guide to integrating and using SOLPays for seamless crypto payments
+            Complete guide to integrating and using SOLPays for seamless crypto
+            payments
           </p>
         </div>
 
@@ -30,16 +31,21 @@ export function DocsPage() {
               <CardContent className="p-8">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg mb-3 text-black">1. Create Account</h3>
+                    <h3 className="text-lg mb-3 text-black">
+                      1. Create Account
+                    </h3>
                     <p className="text-gray-600 mb-4">
-                      Sign up for a SOLPays merchant account to start accepting crypto payments.
+                      Sign up for a SOLPays merchant account to start accepting
+                      crypto payments.
                     </p>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <code className="text-sm text-gray-800">
-                        Visit: https://solpays.app/register<br/>
-                        • Provide business information<br/>
-                        • Verify your identity<br/>
-                        • Connect your Solana wallet
+                        Visit: https://solpays.app/register
+                        <br />
+                        • Provide business information
+                        <br />
+                        • Verify your identity
+                        <br />• Connect your Solana wallet
                       </code>
                     </div>
                   </div>
@@ -53,8 +59,11 @@ export function DocsPage() {
                     </p>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <code className="text-sm text-gray-800">
-                        npm install @solpays/sdk<br/><br/>
-                        import {`{ SOLPays }`} from '@solpays/sdk';<br/>
+                        npm install @solpays/sdk
+                        <br />
+                        <br />
+                        import {`{ SOLPays }`} from '@solpays/sdk';
+                        <br />
                         const solpays = new SOLPays(YOUR_API_KEY);
                       </code>
                     </div>
@@ -63,16 +72,22 @@ export function DocsPage() {
                   <Separator />
 
                   <div>
-                    <h3 className="text-lg mb-3 text-black">3. Accept Payment</h3>
+                    <h3 className="text-lg mb-3 text-black">
+                      3. Accept Payment
+                    </h3>
                     <p className="text-gray-600 mb-4">
                       Create payment requests and handle transactions.
                     </p>
                     <div className="bg-gray-50 rounded-lg p-4">
                       <code className="text-sm text-gray-800">
-                        const payment = await solpays.createPayment({`{`}<br/>
-                        &nbsp;&nbsp;amount: 50.00,<br/>
-                        &nbsp;&nbsp;currency: 'USDC',<br/>
-                        &nbsp;&nbsp;description: 'Coffee Order'<br/>
+                        const payment = await solpays.createPayment({`{`}
+                        <br />
+                        &nbsp;&nbsp;amount: 50.00,
+                        <br />
+                        &nbsp;&nbsp;currency: 'USDC',
+                        <br />
+                        &nbsp;&nbsp;description: 'Coffee Order'
+                        <br />
                         {`}`});
                       </code>
                     </div>
@@ -92,28 +107,44 @@ export function DocsPage() {
               <CardContent className="p-8">
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg mb-3 text-black">Payment Endpoints</h3>
+                    <h3 className="text-lg mb-3 text-black">
+                      Payment Endpoints
+                    </h3>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div>
-                          <Badge variant="secondary" className="mr-2">POST</Badge>
+                          <Badge variant="secondary" className="mr-2">
+                            POST
+                          </Badge>
                           <code className="text-sm">/api/v1/payments</code>
                         </div>
-                        <span className="text-sm text-gray-600">Create payment</span>
+                        <span className="text-sm text-gray-600">
+                          Create payment
+                        </span>
                       </div>
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div>
-                          <Badge variant="outline" className="mr-2">GET</Badge>
-                          <code className="text-sm">/api/v1/payments/{`{id}`}</code>
+                          <Badge variant="outline" className="mr-2">
+                            GET
+                          </Badge>
+                          <code className="text-sm">
+                            /api/v1/payments/{`{id}`}
+                          </code>
                         </div>
-                        <span className="text-sm text-gray-600">Get payment status</span>
+                        <span className="text-sm text-gray-600">
+                          Get payment status
+                        </span>
                       </div>
                       <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div>
-                          <Badge variant="outline" className="mr-2">GET</Badge>
+                          <Badge variant="outline" className="mr-2">
+                            GET
+                          </Badge>
                           <code className="text-sm">/api/v1/transactions</code>
                         </div>
-                        <span className="text-sm text-gray-600">List transactions</span>
+                        <span className="text-sm text-gray-600">
+                          List transactions
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -172,7 +203,9 @@ export function DocsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">$SOLPAYS</span>
-                    <Badge className="bg-gradient-to-r from-[#9945FF] to-[#14F195] text-white">Coming Soon</Badge>
+                    <Badge className="bg-gradient-to-r from-[#9945FF] to-[#14F195] text-white">
+                      Coming Soon
+                    </Badge>
                   </div>
                 </div>
               </CardContent>
@@ -202,7 +235,8 @@ export function DocsPage() {
                   </div>
                   <Separator />
                   <p className="text-xs text-gray-500">
-                    Network fees are additional and paid directly to Solana validators.
+                    Network fees are additional and paid directly to Solana
+                    validators.
                   </p>
                 </div>
               </CardContent>
