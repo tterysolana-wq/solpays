@@ -4,6 +4,7 @@ import { HomePage } from "./components/HomePage";
 import { DocsPage } from "./components/DocsPage";
 import { SupportPage } from "./components/SupportPage";
 import { Footer } from "./components/Footer";
+import { Toaster } from "./components/ui/sonner";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -24,6 +25,7 @@ export default function App() {
       <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
       {renderPage()}
       <Footer onPageChange={setCurrentPage} />
+      <Toaster />
     </div>
   );
 }

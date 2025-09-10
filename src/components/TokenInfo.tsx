@@ -1,12 +1,23 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
-import { Copy, ExternalLink, Clock } from "lucide-react";
+import { Copy, ExternalLink, CheckCircle } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { toast } from "sonner@2.0.3";
 
 export function TokenInfo() {
-  const handleCopyCA = () => {
-    // Placeholder function for when CA is available
-    console.log("CA will be available soon");
+  const contractAddress = "6Nu9C51aKiJJ7oGUmD9T7f1ND8hj44K5CjAYMBswpump";
+  
+  const handleCopyCA = async () => {
+    try {
+      await navigator.clipboard.writeText(contractAddress);
+      toast.success("Contract address copied to clipboard!");
+    } catch (err) {
+      toast.error("Failed to copy contract address");
+    }
+  };
+
+  const handleViewExplorer = () => {
+    window.open(`https://solscan.io/token/${contractAddress}`, '_blank');
   };
 
   return (
@@ -34,8 +45,8 @@ export function TokenInfo() {
                     Solana Network
                   </Badge>
                   <div className="flex items-center gap-2 justify-center sm:justify-end">
-                    <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
-                    <span className="text-xs sm:text-sm">Coming Soon</span>
+                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-400" />
+                    <span className="text-xs sm:text-sm">Live Now</span>
                   </div>
                 </div>
               </div>
@@ -60,7 +71,7 @@ export function TokenInfo() {
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-gray-100">
                       <span className="text-gray-600 text-sm sm:text-base">Total Supply</span>
-                      <span className="text-black text-sm sm:text-base">TBA</span>
+                      <span className="text-black text-sm sm:text-base">1B</span>
                     </div>
                   </div>
                 </div>
@@ -69,18 +80,20 @@ export function TokenInfo() {
                   <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 text-black">Contract Address</h3>
                   <div className="bg-gray-50 rounded-xl p-4 sm:p-6 text-center">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-[#9945FF] to-[#14F195] rounded-full flex items-center justify-center">
-                      <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                      <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Contract Address</p>
-                    <div className="bg-white rounded-lg p-3 sm:p-4 border border-gray-200 mb-3 sm:mb-4">
-                      <code className="text-gray-500 text-xs sm:text-sm">Token launch coming soon...</code>
+                    <div className="bg-white rounded-lg p-3 sm:p-4 border border-gray-200 mb-3 sm:mb-4 overflow-hidden">
+                      <code className="text-gray-800 text-xs sm:text-sm break-all font-mono">
+                        {contractAddress}
+                      </code>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-2 justify-center">
                       <Button 
                         variant="outline" 
                         size="sm" 
-                        disabled
-                        className="opacity-50 text-xs sm:text-sm"
+                        onClick={handleCopyCA}
+                        className="text-xs sm:text-sm hover:bg-gray-100 transition-colors"
                       >
                         <Copy className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                         Copy CA
@@ -88,8 +101,8 @@ export function TokenInfo() {
                       <Button 
                         variant="outline" 
                         size="sm" 
-                        disabled
-                        className="opacity-50 text-xs sm:text-sm"
+                        onClick={handleViewExplorer}
+                        className="text-xs sm:text-sm hover:bg-gray-100 transition-colors"
                       >
                         <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                         View Explorer
@@ -101,16 +114,27 @@ export function TokenInfo() {
               
               <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-200">
                 <div className="text-center">
-                  <h4 className="text-base sm:text-lg mb-2 sm:mb-3 text-black">Get Notified</h4>
+                  <h4 className="text-base sm:text-lg mb-2 sm:mb-3 text-black">Get $SOLPAYS Token</h4>
                   <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base px-2">
-                    Be the first to know when $SOLPAYS token launches
+                    Trade $SOLPAYS token on your favorite Solana DEX
                   </p>
-                  <Button 
-                    size="lg"
-                    className="bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-[#8834FF] hover:to-[#10D484] text-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base transition-all duration-300"
-                  >
-                    Notify Me
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    <Button 
+                      size="lg"
+                      onClick={() => window.open('https://raydium.io/swap', '_blank')}
+                      className="bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-[#8834FF] hover:to-[#10D484] text-white px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base transition-all duration-300"
+                    >
+                      Trade on Raydium
+                    </Button>
+                    <Button 
+                      size="lg"
+                      variant="outline"
+                      onClick={() => window.open(`https://jup.ag/swap/SOL-${contractAddress}`, '_blank')}
+                      className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base transition-all duration-300"
+                    >
+                      Trade on Jupiter
+                    </Button>
+                  </div>
                 </div>
               </div>
             </CardContent>
